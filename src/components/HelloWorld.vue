@@ -2,16 +2,14 @@
   <q-page class="flex flex-center">
     <!-- {{ someValue }} -->
 
-    <q-table 
-      :rows="myData" 
-      row-key="id" 
+    <q-table
+      :rows="myData"
+      row-key="id"
       :columns="columns"
       :filter="filter"
       :pagination="pagination"
-      :rows-per-page-options="[1,0]"
-
-    > 
-
+      :rows-per-page-options="[1, 0]"
+    >
       <!-- search box -->
       <template #top>
         <q-input outlined dense debounce="200" v-model="filter" label="Search">
@@ -27,13 +25,11 @@
         </q-input>
       </template>
 
-
-
       <!-- start body slot template -->
       <template #body="props">
+        
         <!-- parent row -->
         <q-tr :props="props">
-
           <q-td key="expand" name="expand" :props="props" auto-width>
             <q-btn
               flat
@@ -54,9 +50,8 @@
           <q-td key="email" :props="props">
             {{ props.row.email }}
           </q-td>
-
         </q-tr>
-        <!-- END OF parent row -->
+        <!-- end parent row -->
 
         <!-- child row(s) -->
         <q-tr
@@ -70,8 +65,8 @@
           <q-td colspan="100%">&nbsp;</q-td>
         </q-tr>
 
-        <q-tr   
-          v-if="props.row.cars.length !== 0"       
+        <q-tr
+          v-if="props.row.cars.length !== 0"
           style="background-color: darkgray"
           v-show="props.expand"
           :props="props"
@@ -89,24 +84,17 @@
         >
           <q-td key="expand" :props="props" />
 
-          <q-td style="text-align:center;" key="make" >
+          <q-td style="text-align: center" key="make">
             {{ car.make }}
           </q-td>
-          <q-td style="text-align:center;" key="model" >
+          <q-td style="text-align: center" key="model">
             {{ car.model }}
           </q-td>
-
-          
         </q-tr>
-
-        <!-- END OF child row(s) -->
+        <!-- end child row(s) -->
 
       </template>
       <!-- end body slot template -->
-
-
-
-
 
     </q-table>
   </q-page>
@@ -124,20 +112,20 @@ const columns = ref([
     field: "",
   },
   { name: "id", label: "#", field: "id" },
-  { 
-    name: "name", 
-    label: "First Name", 
-    field: (r) => `${r.gender==='M' ? 'Mr' : 'Ms'} ${r.name}`,
-    sortable: true
+  {
+    name: "name",
+    label: "First Name",
+    field: (r) => `${r.gender === "M" ? "Mr" : "Ms"} ${r.name}`,
+    sortable: true,
   },
   { name: "email", label: "E-mail Address", field: "email" },
 ]);
 
-const filter = ref('');
+const filter = ref("");
 
 const pagination = ref({
-  sortBy:'name',
-  rowsPerPage: 1
+  sortBy: "name",
+  rowsPerPage: 1,
 });
 
 setTimeout(function () {
