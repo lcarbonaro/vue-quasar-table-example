@@ -60,7 +60,7 @@
           v-show="props.expand"
           :props="props"
         >
-          <q-td key="expand" :props="props" />
+          <q-td key="expand" :props="props" /> 
           <q-td style="font-size: 1rem" key="id"> No Cars </q-td>
           <q-td colspan="100%">&nbsp;</q-td>
         </q-tr>
